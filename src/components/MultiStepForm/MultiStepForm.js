@@ -54,7 +54,7 @@ export default function MultiStepForm({ productData }) {
     const router = useRouter();
     const searchParams = useSearchParams();
     
-    // ALTERADO: De um único arquivo para um array de arquivos
+    // ESTADO ATUALIZADO para um array de arquivos
     const [attachedFiles, setAttachedFiles] = useState([]);
 
     const getStorageKey = useCallback(() => {
@@ -321,7 +321,7 @@ export default function MultiStepForm({ productData }) {
         if (validationError) setValidationError('');
     }, [validationError, setFormData, setValidationError]);
 
-    // ALTERADO: Novas funções para manipular o array de arquivos
+    // Funções para manipular o array de arquivos
     const handleFileAdd = (file) => {
         setAttachedFiles(prevFiles => [...prevFiles, file]);
     };
@@ -395,7 +395,7 @@ export default function MultiStepForm({ productData }) {
 
     const handleFinalConfirmAndSubmit = () => {
         setIsConfirmModalOpen(false);
-        // ALTERADO: Passa o array de arquivos para o carrinho
+        // Passa o array de arquivos para o carrinho
         addToCart({ ...productData, price: finalPrice, formData, attachedFiles });
         if (typeof window !== 'undefined') {
             const storageKey = getStorageKey();
@@ -409,7 +409,7 @@ export default function MultiStepForm({ productData }) {
     const renderCurrentStep = () => {
         if (formFlow.length === 0 || !formFlow[currentStep]) return <div>Carregando...</div>;
         const { Component } = formFlow[currentStep];
-        // ALTERADO: Passando as novas props para o controle de múltiplos arquivos
+        // Passando as novas props para o controle de múltiplos arquivos
         return <Component 
             formData={formData} 
             handleChange={handleChange} 
@@ -450,6 +450,7 @@ export default function MultiStepForm({ productData }) {
                         currentStep={currentStep}
                         formSteps={formFlow.map(f => f.title)}
                         goToStep={goToStep}
+                        attachedFiles={attachedFiles} // PROP ADICIONADA AQUI
                     />
                 </div>
             </div>

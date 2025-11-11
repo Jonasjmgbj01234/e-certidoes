@@ -47,6 +47,23 @@ const DetailItem = ({ label, value }) => {
     );
 };
 
+// *** NOVO COMPONENTE PARA EXIBIR ANEXOS ***
+const AttachmentItem = ({ files }) => {
+    if (!files || files.length === 0) return null;
+    return (
+        <li className={styles.detailItem}>
+            <span className={styles.detailLabel}>Anexos:</span>
+            <div className={styles.detailValue}>
+                {files.map(file => (
+                    <div key={file.name} style={{ textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>
+                        {file.name}
+                    </div>
+                ))}
+            </div>
+        </li>
+    );
+};
+
 const PriceDetailItem = ({ label, value }) => {
     if (!value && value !== 0) return null;
     return (
@@ -58,7 +75,8 @@ const PriceDetailItem = ({ label, value }) => {
 };
 
 
-export default function SummarySidebar({ productData, formData, finalPrice, currentStep, formSteps, goToStep }) {
+// *** ALTERADO: Adicionado 'attachedFiles' às props ***
+export default function SummarySidebar({ productData, formData, finalPrice, currentStep, formSteps, goToStep, attachedFiles }) {
   
   const renderStepSummary = (stepTitle) => {
     const CUSTO_PAPEL = getTaxa('custo_papel') || 0;
@@ -114,7 +132,6 @@ export default function SummarySidebar({ productData, formData, finalPrice, curr
                 return <PriceDetailItem key={key} label="Inteiro Teor" value={custo} />;
             }
             if (key === 'localizar_pra_mim') return <PriceDetailItem key={key} label="Localizar pra mim" value={99.90} />;
-            // *** LINHA ADICIONADA: Lógica para exibir o preço do SEDEX ***
             if (key === 'sedex') return <PriceDetailItem key={key} label="Sedex" value={CUSTO_SEDEX} />;
         }
         
@@ -124,6 +141,11 @@ export default function SummarySidebar({ productData, formData, finalPrice, curr
 
     if (stepTitle.toLowerCase() === 'formato' && (formData.formato === 'Certidão em papel' || formData.formato === 'Certidão Transcrita' || formData.formato === 'Certidão Reprográfica')) {
         details.push(<PriceDetailItem key="custo_papel" label="Custo de Envio (Papel)" value={CUSTO_PAPEL} />);
+    }
+
+    // *** ADICIONADO: Lógica para exibir os arquivos na etapa de Localização ***
+    if (stepTitle.toLowerCase() === 'localização' && attachedFiles && attachedFiles.length > 0) {
+        details.push(<AttachmentItem key="anexos" files={attachedFiles} />);
     }
 
     if (details.length === 0) return null;

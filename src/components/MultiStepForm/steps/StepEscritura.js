@@ -3,13 +3,15 @@
 
 import { useState, useRef } from 'react';
 import styles from './StepEscritura.module.css';
-import { isValidCPF, isValidCNPJ } from '@/utils/validators'; // Importa os validadores
+import { isValidCPF, isValidCNPJ } from '@/utils/validators';
 
 const maskCPF = (value) => value.replace(/\D/g, '').slice(0, 11).replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d{1,2})$/, '$1-$2');
 const maskCNPJ = (value) => value.replace(/\D/g, '').slice(0, 14).replace(/(\d{2})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1/$2').replace(/(\d{4})(\d)/, '$1-$2');
 
-export default function StepEscritura({ formData, handleChange, error, productData }) {
+// *** PROPS onFileSelect E onFileRemove ADICIONADAS ***
+export default function StepEscritura({ formData, handleChange, error, productData, onFileSelect, onFileRemove }) {
     const [tipoPessoa, setTipoPessoa] = useState(formData.tipo_pessoa || 'Pessoa');
+    const [selectedFile, setSelectedFile] = useState(null); // Estado para o arquivo
     const fileInputRef = useRef(null);
 
     const handleDocumentoChange = (e) => {
@@ -18,7 +20,7 @@ export default function StepEscritura({ formData, handleChange, error, productDa
         
         if (tipoPessoa === 'Pessoa') {
             handleChange({ target: { name, value: maskCPF(value) } });
-        } else { // tipoPessoa === 'Empresa'
+        } else {
             handleChange({ target: { name, value: maskCNPJ(value) } });
         }
     };
@@ -26,20 +28,28 @@ export default function StepEscritura({ formData, handleChange, error, productDa
     const handleTabChange = (tab) => {
         setTipoPessoa(tab);
         handleChange({ target: { name: 'tipo_pessoa', value: tab } });
-        // Limpa os campos ao trocar de aba para evitar confusão e garantir validação
         handleChange({ target: { name: 'nome_outorgante', value: '' } });
         handleChange({ target: { name: 'cpf_cnpj_escritura', value: '' } });
     };
 
+    // *** LÓGICA DE UPLOAD CORRIGIDA ***
     const handleFileChange = (e) => {
         const file = e.target.files[0];
         if (file) {
-            handleChange({ target: { name: 'anexo_escritura_nome', value: file.name } });
-            // Lógica de upload do arquivo seria adicionada aqui
-            // Por enquanto, apenas o nome é salvo no formData
-        } else {
-            handleChange({ target: { name: 'anexo_escritura_nome', value: '' } });
+            if (file.size > 2 * 1024 * 1024) {
+                alert("O arquivo excede o tamanho máximo de 2MB.");
+                e.target.value = '';
+                return;
+            }
+            setSelectedFile(file);
+            if (onFileSelect) onFileSelect(file); // Envia o arquivo para o componente pai
         }
+    };
+
+    const handleRemoveFile = () => {
+        setSelectedFile(null);
+        if (onFileRemove) onFileRemove(); // Avisa o componente pai
+        if (fileInputRef.current) fileInputRef.current.value = '';
     };
 
     return (
@@ -92,10 +102,11 @@ export default function StepEscritura({ formData, handleChange, error, productDa
                     <input type="checkbox" name="localizar_pra_mim" checked={!!formData.localizar_pra_mim} onChange={handleChange} />
                     Localizar pra mim (+ R$ 99,90)
                 </label>
-                <input type="file" ref={fileInputRef} onChange={handleFileChange} style={{ display: 'none' }} />
+                <input type="file" ref={fileInputRef} onChange={handleFileChange} style={{ display: 'none' }} accept="image/png, image/jpeg, .pdf" />
                 <button type="button" className={styles.juntarButton} onClick={() => fileInputRef.current.click()}>
-                    {formData.anexo_escritura_nome ? `Arquivo: ${formData.anexo_escritura_nome}` : 'Juntar Documento'}
+                    {selectedFile ? `Arquivo: ${selectedFile.name}` : 'Juntar Documento'}
                 </button>
+                {selectedFile && <button type="button" onClick={handleRemoveFile} className={styles.removeFileButton}>Remover</button>}
             </div>
         </div>
     );
