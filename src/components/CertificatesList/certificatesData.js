@@ -24,7 +24,7 @@ export const categories = [
   'Cartório de Protesto',
   'Certidões Federais e Estaduais',
   'Certidões Municipais',
-  'Assessoria Jurídica',
+  'Suporte Juridico',
   'Pesquisa'
 ];
 
@@ -434,7 +434,7 @@ export const allCertificates = [
     formFields: []
   })),
   
-  // --- Assessoria Jurídica ---
+  // --- Suporte Juridico ---
   { id: 58, name: 'Consulta Jurídica', slug: toSlug('Consulta Jurídica'), price: 150.00, category: 'Assessoria Jurídica', icon: icons.LAWYER, imageSrc: productImagePaths[toSlug('Consulta Jurídica')],
     description: 'Converse com um advogado especialista para tirar dúvidas sobre documentos, contratos e processos.',
     longDescription: 'Nossa consulta jurídica online conecta você a advogados experientes para obter orientação sobre questões imobiliárias, contratuais, familiares, entre outras...',
