@@ -14,16 +14,17 @@ export default function AssessoriaJuridicaPage() {
   const assessoriaDescription = (
     <>
       <p>
-        O portal e-Certidões é administrado pela Palazzi Sociedade de Advogados, um escritório renomado estabelecido no estado de São Paulo com atuação em todo território nacional.
+        Através do formulário abaixo você poderá solicitar informações sobre questões jurídicas relacionadas a emissão de qualquer documento.
       </p>
       <p>
-        Prestamos Suporte Juridico especializada no âmbito do direito imobiliário, civil e empresarial.
-      </p>
-      <p>
-        Através do formulário abaixo você poderá solicitar uma consulta por videoconferência com um advogado especialista. Ou fale conosco através do WhatsApp: <strong>(19) 99915-8230</strong>.
+        O suporte também é oferecido pelo Whatsapp: <strong>(19) 99915-8230</strong>.
       </p>
     </>
   );
+}
+
+
+
 
   return (
     <div className={styles.fullPageContainer}>
