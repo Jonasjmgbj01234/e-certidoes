@@ -4,7 +4,7 @@ import CertificatesList from "@/components/CertificatesList/CertificatesList";
 
 // Metadata para SEO e título da aba do navegador
 export const metadata = {
-  title: "Certidões - E-Certidões",
+  title: "Certidões - E-DocumentoAqui",
   description: "Filtre e encontre todas as certidões disponíveis. Solicite online de forma fácil, rápida e segura.",
 };
 

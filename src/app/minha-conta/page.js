@@ -4,7 +4,7 @@ import AuthForm from "@/components/AuthForm/AuthForm";
 import styles from './MinhaConta.module.css';
 
 export const metadata = {
-  title: "Minha Conta - E-Certidões",
+  title: "Minha Conta - DocumentoAqui",
   description: "Acesse sua conta ou cadastre-se para solicitar e acompanhar suas certidões.",
 };
 

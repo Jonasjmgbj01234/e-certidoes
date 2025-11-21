@@ -5,7 +5,7 @@ import FormSection from "@/components/FormSection/FormSection";
 import styles from './ContactPage.module.css';
 
 export const metadata = {
-  title: "Contato - E-Certidões",
+  title: "Contato - DocumentoAqui",
   description: "Fale com a nossa equipe. Tire suas dúvidas sobre certidões e pedidos.",
 };
 

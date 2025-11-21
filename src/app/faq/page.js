@@ -5,7 +5,7 @@ import FaqAccordion from "@/components/FaqAccordion/FaqAccordion";
 import styles from './FaqPage.module.css';
 
 export const metadata = {
-  title: "Tire suas Dúvidas - E-Certidões",
+  title: "Tire suas Dúvidas - DocumentoAqui",
   description: "Encontre respostas para as perguntas mais frequentes sobre nossos serviços de certidões, prazos, pagamentos e muito mais.",
 };
 
