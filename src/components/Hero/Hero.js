@@ -8,15 +8,15 @@ const Hero = () => {
         <div className={styles.content}>
           <div className={styles.titleWrapper}>
             <h1 className={styles.title}>
-              Certidões online: fácil, rápido e seguro
+              Certidões solicitadas online, de forma rápida e segura
             </h1>
           </div>
           <p className={styles.subtitle}>
-            Em poucos cliques você solicita certidões de cartórios,
-            tabelionatos e Tribunais de todo o Brasil.
+          Serviço privado que facilita a solicitação,
+           busca e entrega de documentos em todo o Brasil
           </p>
           <button className={styles.ctaButton}>
-            Solicite Agora
+            SOLICITE AGORA
           </button>
         </div>
         <div className={styles.imageContainer}>
