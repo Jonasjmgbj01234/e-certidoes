@@ -1,13 +1,12 @@
-// Salve em: src/components/MultiStepForm/steps/StepPesquisaAvancada.js
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link'; // 1. Importar o Link
+import Link from 'next/link';
 import styles from './StepPesquisaAvancada.module.css';
 import SearchableDropdown from './SearchableDropdown';
 import api from '@/services/api';
 import axios from 'axios';
-import { getPrice } from '@/utils/pricingData'; // 2. Importar a função de preço
+import { getPrice } from '@/utils/pricingData';
 
 const maskCPF = (value) => value.replace(/\D/g, '').slice(0, 11).replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d{1,2})$/, '$1-$2');
 const maskCNPJ = (value) => value.replace(/\D/g, '').slice(0, 14).replace(/(\d{2})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1/$2').replace(/(\d{4})(\d)/, '$1-$2');
@@ -20,9 +19,9 @@ export default function StepPesquisaAvancada({ formData, handleChange, productDa
   const [cartorios, setCartorios] = useState([]);
   const [loading, setLoading] = useState({ estados: false, cidades: false, cartorios: false });
   const [nameLoading, setNameLoading] = useState(false);
-  const [isServiceAvailable, setIsServiceAvailable] = useState(true); // 3. Novo estado de controle
+  const [isServiceAvailable, setIsServiceAvailable] = useState(true);
 
-  // 4. Efeito para verificar disponibilidade do serviço
+  // Efeito para verificar disponibilidade do serviço
   useEffect(() => {
     if (formData.estado_pesquisa) {
       const priceKey = productData.pesquisaType === 'previa' ? 'pesquisa_previa' : 'pesquisa_qualificada';
@@ -103,7 +102,7 @@ export default function StepPesquisaAvancada({ formData, handleChange, productDa
         <SearchableDropdown options={estados} value={formData.estado_pesquisa || ''} onChange={(v) => handleDropdownChange('estado_pesquisa', v)} placeholder="Selecione o estado" loading={loading.estados} />
       </div>
 
-      {/* 5. Renderização condicional dos campos ou da mensagem de fallback */}
+      {/* Renderização condicional dos campos ou da mensagem de fallback */}
       {isServiceAvailable ? (
         <>
           <div className={styles.formGroup}>
@@ -165,7 +164,7 @@ export default function StepPesquisaAvancada({ formData, handleChange, productDa
           </div>
 
           <p className={styles.advertencia}>
-            <strong>ADVERTÊNCIA:</strong> O titular dos dados pesquisados poderá solicitar a <strong>A e-Certidões</strong> informações relativas à identificação do solicitante e indicação da finalidade (Provimento CNJ n. 134/2022, art. 50, Parágrafo único).
+            <strong>ADVERTÊNCIA:</strong> O titular dos dados pesquisados poderá solicitar a <strong>Documento Aqui</strong> informações relativas à identificação do solicitante e indicação da finalidade (Provimento CNJ n. 134/2022, art. 50, Parágrafo único).
           </p>
 
           <div className={styles.finalConfirm}>

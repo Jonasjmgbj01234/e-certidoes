@@ -3,64 +3,60 @@ import Footer from "@/components/Footer/Footer";
 // Reutilizando o mesmo CSS da página de privacidade para manter a consistência
 import styles from '../politica-de-privacidade/PrivacyPolicy.module.css';
 
+export const metadata = {
+  title: "Política de Reembolso - Documento Aqui",
+  description: "Conheça as condições de reembolso e devolução da Documento Aqui.",
+};
+
 export default function RefundPolicyPage() {
   return (
     <>
       <Header />
       <main className={styles.pageWrapper}>
         <div className={styles.container}>
-          <h1 className={styles.title}>Política de Reembolso e Devolução</h1>
-          <p className={styles.updateDate}>Última atualização em 07/07/2025.</p>
+          <h1 className={styles.title}>Política de Reembolso</h1>
+          <p className={styles.updateDate}>Última atualização: {new Date().toLocaleDateString('pt-BR')}</p>
 
           <div className={styles.content}>
-            <p>
-              A E-Certidões preza pela transparência, responsabilidade e clareza na relação com seus usuários. Esta política estabelece as condições para reembolsos, estornos e devoluções de valores referentes aos serviços contratados por meio da plataforma, administrada pela Palazzi Sociedade Individual de Advocacia, registrada na OAB/SP sob o nº 58133.
-            </p>
-
-            <h2 className={styles.sectionTitle}>1. Quando é possível solicitar reembolso?</h2>
-            <p>Você poderá solicitar reembolso nas seguintes situações:</p>
+            
+            <h2 className={styles.sectionTitle}>1. Direito ao Reembolso</h2>
+            <p>Você poderá solicitar <strong>reembolso integral</strong> quando:</p>
             <ul>
-              <li>O pedido ainda não foi processado ou enviado ao cartório, tabelionato ou órgão público competente</li>
-              <li>Houve pagamento em duplicidade</li>
-              <li>O prazo estimado de entrega foi ultrapassado em mais de 10 dias úteis, sem justificativa oficial por parte do órgão emissor</li>
+              <li>a) O pedido <strong>não tiver sido encaminhado</strong> ao órgão emissor;</li>
+              <li>b) Houver <strong>cobrança em duplicidade</strong>;</li>
+              <li>c) O prazo de entrega ultrapassar <strong>30 dias úteis além do previsto</strong> sem justificativa do órgão emissor.</li>
             </ul>
 
-            <h2 className={styles.sectionTitle}>2. Situações que não geram reembolso</h2>
-            <p>Não serão concedidos reembolsos nos seguintes casos:</p>
+            <h2 className={styles.sectionTitle}>2. Casos sem Direito a Reembolso Integral</h2>
+            <p><strong>Não haverá reembolso quando:</strong></p>
             <ul>
-              <li>Dados preenchidos incorretamente pelo usuário</li>
-              <li>Recusa de emissão da certidão por falta de informações obrigatórias</li>
-              <li>Retorno de documento com certidão negativa (“nada consta”)</li>
-              <li>Cancelamento solicitado após o início do processo junto ao cartório ou órgão emissor</li>
-              <li>Custos de envio (frete) em caso de devolução por endereço incorreto ou ausência no recebimento</li>
+              <li>a) O pedido <strong>já tiver sido enviado</strong> ao órgão emissor;</li>
+              <li>b) Os dados informados pelo usuário estiverem <strong>incorretos</strong>;</li>
+              <li>c) For emitida certidão negativa (<strong>“nada consta”</strong>);</li>
+              <li>d) O órgão <strong>negar a emissão</strong> por motivos formais;</li>
+              <li>e) Houver necessidade de <strong>retificação</strong>, apresentação de documentos extras ou exigências do órgão;</li>
+              <li>f) O documento retornar por <strong>endereço incorreto</strong> ou ausência do destinatário.</li>
             </ul>
 
-            <h2 className={styles.sectionTitle}>3. Como solicitar o reembolso?</h2>
+            <h2 className={styles.sectionTitle}>3. Reembolso Parcial</h2>
             <p>
-              Se o seu caso se enquadra nas situações previstas na seção 1, você poderá solicitar o reembolso preenchendo o formulário disponível em nossa plataforma, informando:
+              Quando houver custos cartoriais já pagos ou despesas operacionais, poderá ocorrer <strong>reembolso parcial</strong>, com retenção desses valores e de uma <strong>taxa administrativa de R$ 43,00</strong> referente aos custos operacionais e de suporte já incorridos no processamento inicial do pedido.
             </p>
             <p>
-              O pedido será analisado em até 5 dias úteis. Em caso de aprovação, o reembolso será efetuado em até 30 dias corridos, conforme o método de pagamento utilizado.
+              O usuário sempre será informado de qualquer custo adicional antes da cobrança.
             </p>
 
-            <h2 className={styles.sectionTitle}>4. Reembolso parcial</h2>
+            <h2 className={styles.sectionTitle}>4. Como Solicitar</h2>
+            <p>Envie e-mail para:</p>
             <p>
-              Poderá ser concedido reembolso parcial nos casos em que o serviço já tenha sido iniciado e tenham sido gerados custos administrativos e operacionais, tais como:
+                <strong>contato@documentoaqui.com.br</strong>
             </p>
-            <ul>
-                <li>Taxas de intermediação</li>
-                <li>Processamento parcial do pedido junto ao cartório ou órgão competente</li>
-                <li>Retorno de certidão negativa com despesas operacionais já executadas</li>
-            </ul>
-
-            <h2 className={styles.sectionTitle}>5. Contato</h2>
             <p>
-              Em caso de dúvidas sobre esta política ou para acompanhar a sua solicitação, entre em contato com nosso time de atendimento:
+              Informe o <strong>número do pedido</strong> e o <strong>motivo</strong>.
             </p>
-            <ul>
-                <li>contato@e-certidoes.net.br</li>
-                <li>Segunda a sexta, das 9h às 17h</li>
-            </ul>
+            <p>
+              O processamento ocorre em até <strong>30 dias corridos</strong> após aprovação.
+            </p>
           </div>
         </div>
       </main>

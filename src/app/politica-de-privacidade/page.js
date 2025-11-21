@@ -2,6 +2,11 @@ import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import styles from './PrivacyPolicy.module.css';
 
+export const metadata = {
+  title: "Política de Privacidade - Documento Aqui",
+  description: "Saiba como a Documento Aqui coleta, usa e protege seus dados pessoais.",
+};
+
 export default function PrivacyPolicyPage() {
   return (
     <>
@@ -9,125 +14,122 @@ export default function PrivacyPolicyPage() {
       <main className={styles.pageWrapper}>
         <div className={styles.container}>
           <h1 className={styles.title}>Política de Privacidade</h1>
-          <p className={styles.updateDate}>Última atualização em 07/07/2025.</p>
+          <p className={styles.updateDate}>Última atualização: {new Date().toLocaleDateString('pt-BR')}</p>
 
           <div className={styles.content}>
+            
+            <h2 className={styles.sectionTitle}>1. Introdução</h2>
             <p>
-              Esta Política de Privacidade tem como objetivo informar, de forma clara e objetiva, como os dados pessoais dos usuários são coletados, utilizados e protegidos pela E-Certidões, plataforma administrada pela Palazzi Sociedade Individual de Advocacia, registrada na OAB/SP sob o nº 58133 e inscrita no CNPJ nº 58.995.590/0001-10, com sede no estado de São Paulo.
-            </p>
-            <p>
-              A E-Certidões atua em conformidade com a Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018 – LGPD) e adota práticas de segurança, transparência e responsabilidade no tratamento das informações.
-            </p>
-
-            <h2 className={styles.sectionTitle}>1. Quem somos</h2>
-            <p>
-              A E-Certidões é uma plataforma privada que atua como intermediadora na solicitação de certidões e documentos junto a cartórios, tabelionatos e órgãos administrativos dos governos estaduais e federal. Os dados fornecidos pelos usuários são tratados com o mais alto nível de segurança e confidencialidade, com o apoio de uma equipe especializada e respaldo jurídico.
+              A <strong>Documento Aqui</strong> respeita sua privacidade e realiza o tratamento de dados conforme a Lei 13.709/2018 (LGPD).
             </p>
 
-            <h2 className={styles.sectionTitle}>2. Quais dados são coletados</h2>
-            <p>
-              Durante a navegação ou uso dos serviços da plataforma, podemos coletar os seguintes dados pessoais:
-            </p>
+            <h2 className={styles.sectionTitle}>2. Dados que Coletamos</h2>
+            <p><strong>2.1. Dados fornecidos pelo usuário</strong></p>
             <ul>
               <li>Nome completo</li>
-              <li>CPF</li>
-              <li>E-mail</li>
+              <li>CPF / RG</li>
               <li>Endereço</li>
               <li>Telefone</li>
-              <li>Informações da certidão solicitada (ex: nomes de terceiros, número de registro, datas etc.)</li>
-              <li>Dados de pagamento (via processadoras externas)</li>
-              <li>Endereço IP, navegador e informações do dispositivo</li>
+              <li>E-mail</li>
+              <li>Dados necessários à emissão do documento solicitado</li>
             </ul>
-            <p>
-              Esses dados podem ser fornecidos diretamente pelo usuário ou coletados automaticamente durante o uso da plataforma.
-            </p>
 
-            <h2 className={styles.sectionTitle}>3. Como os dados são usados</h2>
-            <p>
-              Os dados pessoais coletados são utilizados com as seguintes finalidades:
-            </p>
+            <p><strong>2.2. Dados coletados automaticamente</strong></p>
             <ul>
-                <li>Processamento de pedidos de certidões e documentos</li>
-                <li>Realização de atendimento e suporte ao cliente</li>
-                <li>Cumprimento de obrigações legais ou regulatórias</li>
-                <li>Envio de notificações e atualizações de status do pedido</li>
-                <li>Emissão de notas fiscais</li>
-                <li>Prevenção de fraudes e uso indevido da plataforma</li>
-                <li>Melhoria contínua da experiência de navegação</li>
+              <li>Endereço IP</li>
+              <li>Navegador e dispositivo</li>
+              <li>Cookies e identificadores</li>
+              <li>Informações de acesso e navegação</li>
             </ul>
+
+            <h2 className={styles.sectionTitle}>3. Finalidade e Base Legal (LGPD)</h2>
             <p>
-              O tratamento é realizado com base nas hipóteses legais do Art. 7º da LGPD, como o consentimento do titular, execução de contrato, cumprimento de obrigação legal e legítimo interesse.
+                <strong>a) Processar pedidos e intermediar documentos</strong><br/>
+                Base legal: Art. 7º, inciso V - execução de contrato
+            </p>
+            <p>
+                <strong>b) Comunicação com o cliente (atualizações e suporte)</strong><br/>
+                Base legal: Art. 7º, inciso V - execução de contrato
+            </p>
+            <p>
+                <strong>c) Cumprimento de exigências legais de órgãos públicos</strong><br/>
+                Base legal: Art. 7º, inciso II – cumprimento de obrigação legal
+            </p>
+            <p>
+                <strong>d) Segurança, prevenção a fraudes e melhorias da plataforma</strong><br/>
+                Base legal: Art. 7º, inciso IX - legítimo interesse
+            </p>
+            <p>
+                <strong>e) Comunicações informativas ou voluntárias</strong><br/>
+                Base legal: Art. 7º, inciso I - consentimento, quando cabível
             </p>
 
-            <h2 className={styles.sectionTitle}>4. Compartilhamento de dados</h2>
-            <p>
-              Seus dados poderão ser compartilhados com terceiros exclusivamente para fins de execução dos serviços contratados ou cumprimento de obrigações legais, incluindo:
-            </p>
+            <h2 className={styles.sectionTitle}>4. Compartilhamento de Dados</h2>
+            <p>Seus dados serão compartilhados somente com:</p>
             <ul>
-                <li>Cartórios, tabelionatos e órgãos públicos administrativos estaduais ou federais</li>
-                <li>Equipe interna autorizada e parceiros técnicos confiáveis</li>
-                <li>Plataformas de pagamento</li>
-                <li>Autoridades públicas, quando exigido por lei ou por decisão judicial</li>
+                <li>cartórios, tabelionatos e órgãos públicos relacionados ao pedido;</li>
+                <li>empresas de processamento de pagamentos;</li>
+                <li>empresas de entrega (Correios/transportadoras);</li>
+                <li>autoridades públicas, quando exigido por lei.</li>
             </ul>
-            <p>
-              Não vendemos, alugamos ou comercializamos seus dados pessoais.
-            </p>
+            <p><strong>Jamais vendemos ou alugamos seus dados.</strong></p>
 
-            <h2 className={styles.sectionTitle}>5. Proteção dos dados</h2>
-            <p>
-              A E-Certidões adota medidas técnicas e organizacionais para proteger os dados pessoais, tais como:
-            </p>
+            <h2 className={styles.sectionTitle}>5. Cookies e Tecnologias Semelhantes</h2>
+            <p>Utilizamos cookies para:</p>
             <ul>
-                <li>Uso de criptografia em conexões seguras (SSL)</li>
-                <li>Controles de acesso e autenticação</li>
-                <li>Armazenamento seguro em ambientes controlados</li>
-                <li>Treinamento de equipe e auditorias internas de segurança</li>
+                <li>funcionamento essencial do site;</li>
+                <li>melhorar sua experiência;</li>
+                <li>fins estatísticos e analíticos.</li>
             </ul>
             <p>
-              O acesso às informações é restrito a pessoas autorizadas e com finalidade legítima.
+              Você pode desativar cookies no navegador, mas partes do site podem não funcionar corretamente.
             </p>
 
-            <h2 className={styles.sectionTitle}>6. Direitos do usuário</h2>
-            <p>
-              Nos termos da LGPD, você tem o direito de:
-            </p>
+            <h2 className={styles.sectionTitle}>6. Segurança dos Dados</h2>
+            <p>Aplicamos medidas de segurança técnicas e administrativas, incluindo:</p>
             <ul>
-                <li>Confirmar se tratamos seus dados</li>
-                <li>Acessar e corrigir informações pessoais</li>
-                <li>Solicitar a exclusão ou anonimização de dados, quando aplicável</li>
-                <li>Revogar o consentimento fornecido</li>
-                <li>Solicitar portabilidade ou limitação do tratamento</li>
+                <li>criptografia HTTPS/SSL;</li>
+                <li>controle restrito de acesso;</li>
+                <li>armazenamento seguro;</li>
+                <li>logs de acesso;</li>
+                <li>equipe treinada e supervisionada.</li>
             </ul>
-            <p>
-              Para exercer esses direitos, entre em contato por meio do canal indicado ao final desta política.
-            </p>
 
-            <h2 className={styles.sectionTitle}>7. Uso de cookies</h2>
-            <p>
-              Utilizamos cookies e tecnologias semelhantes para melhorar a experiência do usuário, personalizar conteúdo e analisar o uso da plataforma. O usuário pode configurar o navegador para desabilitar cookies, ciente de que certas funcionalidades podem ser afetadas.
-            </p>
-
-            <h2 className={styles.sectionTitle}>8. Retenção de dados</h2>
-            <p>
-              Seus dados pessoais serão armazenados apenas pelo tempo necessário para a prestação dos serviços ou cumprimento de obrigações legais. Após esse período, serão eliminados ou anonimizados de forma segura.
-            </p>
-
-            <h2 className={styles.sectionTitle}>9. Alterações nesta política</h2>
-            <p>
-              Esta Política de Privacidade pode ser atualizada a qualquer momento para refletir alterações legais ou operacionais. A versão mais recente estará sempre disponível nesta página. Recomendamos a leitura periódica.
-            </p>
-
-            <h2 className={styles.sectionTitle}>10. Contato</h2>
-            <p>
-              Em caso de dúvidas, solicitações ou para exercer seus direitos relacionados aos dados pessoais, entre em contato com nossa equipe:
-            </p>
+            <h2 className={styles.sectionTitle}>7. Retenção dos Dados</h2>
+            <p>Os dados são mantidos:</p>
             <ul>
-                <li>contato@e-certidoes.net.br</li>
-                <li>Segunda a sexta, das 9h às 17h</li>
+                <li>pelo período necessário à conclusão do serviço;</li>
+                <li>para cumprimento de obrigações legais;</li>
+                <li>para comprovação da prestação do serviço.</li>
+            </ul>
+            <p>Após isso, são eliminados ou anonimizados.</p>
+
+            <h2 className={styles.sectionTitle}>8. Direitos do Titular</h2>
+            <p>Você pode solicitar:</p>
+            <ul>
+                <li>confirmação de tratamento;</li>
+                <li>acesso aos dados;</li>
+                <li>correção;</li>
+                <li>anonimização;</li>
+                <li>eliminação (quando possível);</li>
+                <li>portabilidade;</li>
+                <li>revogação de consentimento.</li>
             </ul>
             <p>
-              A E-Certidões reafirma seu compromisso com a segurança, privacidade e transparência no tratamento dos dados pessoais de seus usuários.
+                Para exercer seus direitos, envie mensagem para: <strong>contato@documentoaqui.com.br</strong>
             </p>
+
+            <h2 className={styles.sectionTitle}>9. Encarregado de Dados (DPO)</h2>
+            <p>
+                <strong>Jonas Palazzi Ferreira</strong><br/>
+                E-mail: <strong>contato@documentoaqui.com.br</strong>
+            </p>
+
+            <h2 className={styles.sectionTitle}>10. Atualizações desta Política</h2>
+            <p>
+              Esta Política poderá ser atualizada. A versão vigente estará sempre publicada em nosso site.
+            </p>
+
           </div>
         </div>
       </main>

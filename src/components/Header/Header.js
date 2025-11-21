@@ -1,10 +1,9 @@
-// Salve em: src/components/Header/Header.js
 'use client';
 
-import { useState, useEffect } from 'react'; // Adicionado useEffect
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation'; // Importar para fechar o menu na navegação
+import { usePathname } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import { useCart } from '@/context/CartContext';
 import { ShoppingCartIcon } from './ShoppingCartIcon';
@@ -35,7 +34,7 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        {/* Camada de Overlay (agora um elemento separado) */}
+        {/* Camada de Overlay */}
         <div
           className={`${styles.overlay} ${isMenuOpen ? styles.overlayVisible : ''}`}
           onClick={closeMenu}
@@ -46,7 +45,7 @@ const Header = () => {
           <Link href="/">
             <Image
               src="/logo.png"
-              alt="e-Certidões Logo"
+              alt="Documento Aqui Logo"
               width={200}
               height={50}
               priority

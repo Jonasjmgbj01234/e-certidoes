@@ -1,15 +1,14 @@
-// Salve em: src/app/layout.js
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import { AuthProvider } from "@/context/AuthContext";
-import WhatsAppButton from "@/components/WhatsAppButton/WhatsAppButton"; // 1. IMPORTE O COMPONENTE
+import WhatsAppButton from "@/components/WhatsAppButton/WhatsAppButton";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "e-Certidões",
-  description: "Certidões online: fácil, rápido e seguro",
+  title: "Documento Aqui",
+  description: "Sua facilitadora na solicitação de documentos e certidões em todo o Brasil.",
 };
 
 export default function RootLayout({ children }) {
@@ -22,7 +21,7 @@ export default function RootLayout({ children }) {
           </CartProvider>
         </AuthProvider>
 
-        <WhatsAppButton /> {/* 2. ADICIONE O COMPONENTE AQUI */}
+        <WhatsAppButton />
       </body>
     </html>
   );
