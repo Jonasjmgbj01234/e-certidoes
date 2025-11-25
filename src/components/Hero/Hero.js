@@ -21,7 +21,7 @@ const Hero = () => {
         </div>
         <div className={styles.imageContainer}>
           <Image
-            src="/hero.png"
+            src="/herocerta.png"
             alt="Mulher apontando para um notebook com uma certidão na tela"
             width={700}
             height={600}
