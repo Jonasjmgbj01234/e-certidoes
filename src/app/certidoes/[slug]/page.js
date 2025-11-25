@@ -1,7 +1,7 @@
 // Salve em: src/app/certidoes/[slug]/page.js
 'use client';
 
-import { useState, Suspense } from 'react'; // 1. IMPORTAR O SUSPENSE
+import { useState, Suspense } from 'react';
 import { notFound, useParams } from 'next/navigation';
 import { allCertificates } from '@/components/CertificatesList/certificatesData';
 import Header from '@/components/Header/Header';
@@ -11,9 +11,12 @@ import MultiStepForm from '@/components/MultiStepForm/MultiStepForm';
 import ProductTabs from '@/components/ProductPage/ProductTabs';
 import InfoModal from '@/components/ProductPage/InfoModal';
 import Image from 'next/image';
-import PageLoader from '@/components/PageLoader/PageLoader'; // 2. IMPORTAR O LOADER
+import PageLoader from '@/components/PageLoader/PageLoader';
 import styles from '@/components/ProductPage/ProductPage.module.css';
 import modalStyles from '@/components/ProductPage/ProductInfoSection.module.css';
+
+// 1. IMPORTANTE: Importe o arquivo de mapeamento de imagens que você criou
+import { productImagePaths } from '@/utils/imagePaths';
 
 export default function CertidaoPage() {
   const params = useParams();
@@ -27,7 +30,12 @@ export default function CertidaoPage() {
     return notFound();
   }
 
-  const imageSrc = certificate.imageSrc || '/certidoes/default-placeholder.png';
+  // 2. CORREÇÃO AQUI:
+  // Prioridade: 
+  // 1º - Tenta pegar do arquivo manual (imagePaths.js)
+  // 2º - Se não achar, tenta pegar do cadastro do produto (certificate.imageSrc)
+  // 3º - Se nenhum existir, usa o placeholder
+  const imageSrc = productImagePaths[slug] || certificate.imageSrc || '/certidoes/default-placeholder.png';
 
   return (
     <>
@@ -44,7 +52,6 @@ export default function CertidaoPage() {
           
           <div id="form-inicio">
             {!certificate.isPlaceholder ? (
-              // 3. ENVOLVER O MULTISTEPFORM COM O SUSPENSE
               <Suspense fallback={<PageLoader />}>
                 <MultiStepForm productData={certificate} />
               </Suspense>
