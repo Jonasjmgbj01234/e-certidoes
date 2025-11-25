@@ -31,7 +31,23 @@ export default function StepTipoCertidao({ formData, handleChange, error, produc
   // Condição principal para alternar a interface
   const isRegistroCivil = productData?.category === 'Cartório de Registro Civil';
 
-  // Handlers para o fluxo de Imóveis
+  // --- LÓGICA DEFINITIVA ---
+  const getHelperImage = () => {
+    const slug = productData?.slug || '';
+    
+    // Debug no console para confirmar
+    console.log("Slug atual:", slug);
+
+    // 1. Apenas Certidão de Nascimento usa a imagem nascimento.png
+    if (slug.includes('certidao-de-nascimento')) {
+        return '/nascimento.png'; 
+    }
+    
+    // 2. Casamento, Óbito e todas as outras usam a imagem do RG
+    return '/rg.png'; 
+  };
+
+  // Handlers
   const handlePactoCpf1Change = (e) => handleChange({ target: { name: 'pacto_conjuge1_cpf', value: maskCPF(e.target.value) } });
   const handlePactoCpf2Change = (e) => handleChange({ target: { name: 'pacto_conjuge2_cpf', value: maskCPF(e.target.value) } });
   const handleLivro3gCpfChange = (e) => handleChange({ target: { name: 'livro3g_cpf', value: maskCPF(e.target.value) } });
@@ -40,24 +56,21 @@ export default function StepTipoCertidao({ formData, handleChange, error, produc
   const handleOptionChange = (e) => { setSelectedOption(e.target.value); handleChange(e); };
   const handleTabClick = (key, name) => setActiveTabs(prev => ({ ...prev, [key]: name }));
   
-  // Handler compartilhado
   const openImageModal = (path) => { setModalImage(path); setIsModalOpen(true); };
   
-  // Opções para Cartório de Imóveis
   const imovelOptions = [
-    { value: 'Matrícula', label: 'Matrícula', description: 'É o número de registro do imóvel. A identificação do imóvel nos registros dos cartórios de imóveis. Inclui características, dados do imóvel e dados do proprietário.' },
+    { value: 'Matrícula', label: 'Matrícula', description: 'É o número de registro do imóvel.' },
     { value: 'Vintenária', label: 'Vintenária', description: 'Exibe o histórico do imóvel por vinte anos.' },
-    { value: 'Transcrição', label: 'Transcrição', description: 'É o antigo registro de imóveis realizado antes de 1975. O levantamento é feito pelo cartório através de buscas manuais nos livros físicos.' },
-    { value: 'Documento Arquivado', label: 'Documento Arquivado', description: 'Documentos arquivados que originaram os atos como: Documentos do processo de Intimação e Consolidação, Plantas e outros.' },
-    { value: 'Pacto Antenupcial', label: 'Pacto Antenupcial', description: 'É o contrato, realizado antes do casamento onde as partes dispõem sobre o regime de bens do matrimônio' },
-    { value: 'Condomínio', label: 'Condomínio', description: 'A convenção tem força de lei para todos os condôminos, inquilinos, síndicos, empregados e visitantes do condomínio.' },
-    { value: 'Livro 3 - Garantias', label: 'Livro 3 - Garantias', description: 'Contém as garantias das cédulas de crédito registradas no Livro 3 do Registro de Imóveis.' },
-    { value: 'Livro 3 - Auxiliar', label: 'Livro 3 - Auxiliar', description: 'Contém os demais registros ocorridos no Livro 3 do Registro de Imóveis.' },
-    { value: 'Quesitos', label: 'Quesitos', description: 'Atos que foram atribuídos por lei ao registro de imóveis mas que não estão relacionados diretamente ao imóvel.' },
+    { value: 'Transcrição', label: 'Transcrição', description: 'É o antigo registro de imóveis realizado antes de 1975.' },
+    { value: 'Documento Arquivado', label: 'Documento Arquivado', description: 'Documentos arquivados que originaram os atos.' },
+    { value: 'Pacto Antenupcial', label: 'Pacto Antenupcial', description: 'É o contrato realizado antes do casamento.' },
+    { value: 'Condomínio', label: 'Condomínio', description: 'Convenção do condomínio.' },
+    { value: 'Livro 3 - Garantias', label: 'Livro 3 - Garantias', description: 'Garantias das cédulas de crédito.' },
+    { value: 'Livro 3 - Auxiliar', label: 'Livro 3 - Auxiliar', description: 'Demais registros ocorridos no Livro 3.' },
+    { value: 'Quesitos', label: 'Quesitos', description: 'Atos atribuídos por lei ao registro de imóveis.' },
   ];
   
   const civilFormFields = productData?.formFields?.[0]?.fields || [];
-  const certidaoTipo = productData.name;
   
   const renderConditionalFieldsImoveis = () => {
     switch (selectedOption) {
@@ -84,7 +97,7 @@ export default function StepTipoCertidao({ formData, handleChange, error, produc
                 <FormField key={field.id} {...field} value={formData[field.id]} onChange={handleChange} />
             )}
             
-            <div className={styles.infoBox} onClick={() => openImageModal('/images/exemplo-rg-certidao.png')}>
+            <div className={styles.infoBox} onClick={() => openImageModal(getHelperImage())}>
                 <InfoIcon />
                 <div>
                     <strong>Clique aqui e veja como identificar o Livro, Folha e Termo na Certidão.</strong>
@@ -100,7 +113,7 @@ export default function StepTipoCertidao({ formData, handleChange, error, produc
         <>
           <p className={styles.stepDescription}>Escolha o tipo de certidão:</p>
           <div className={styles.radioGroupContainer}>
-            {imovelOptions.slice(0, 1).map(opt => ( // Mostra apenas Matrícula
+            {imovelOptions.slice(0, 1).map(opt => ( 
               <label key={opt.value} className={styles.radioOption}>
                 <input type="radio" name="tipo_certidao" value={opt.value} checked={selectedOption === opt.value} onChange={handleOptionChange} required />
                 <div className={styles.radioDetails}>
