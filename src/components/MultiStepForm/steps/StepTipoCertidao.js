@@ -44,7 +44,7 @@ export default function StepTipoCertidao({ formData, handleChange, error, produc
     }
     
     // 2. Casamento, Óbito e todas as outras usam a imagem do RG
-    return '/rg.png'; 
+    return '/certidao.png'; 
   };
 
   // Handlers
