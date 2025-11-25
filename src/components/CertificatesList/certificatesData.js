@@ -434,14 +434,6 @@ export const allCertificates = [
     formFields: []
   })),
   
-  // --- Suporte Juridico ---
-  { id: 58, name: 'Consulta Jurídica', slug: toSlug('Consulta Jurídica'), price: 150.00, category: 'Assessoria Jurídica', icon: icons.LAWYER, imageSrc: productImagePaths[toSlug('Consulta Jurídica')],
-    description: 'Converse com um advogado especialista para tirar dúvidas sobre documentos, contratos e processos.',
-    longDescription: 'Nossa consulta jurídica online conecta você a advogados experientes para obter orientação sobre questões imobiliárias, contratuais, familiares, entre outras...',
-    faq: '[{"q": "Como funciona a consulta?", "a": "Após a contratação, você agenda um horário para uma chamada de vídeo ou telefone com um de nossos advogados parceiros para discutir seu caso."},{"q": "A consulta resolve meu problema legal?", "a": "A consulta serve para orientar e esclarecer dúvidas. Caso seja necessário ingressar com uma ação ou elaborar um documento complexo, o advogado poderá apresentar uma proposta para estes serviços."}]', 
-    formFields: formTemplateConsultaJuridica,
-    skipValidationAndTerms: true
-  },
 
   // --- Pesquisa ---
   { id: 59, name: 'Pesquisa Completa de Veículo', slug: toSlug('Pesquisa Completa de Veículo'), price: 77.60, category: 'Pesquisa', icon: icons.SEARCH, imageSrc: productImagePaths[toSlug('Pesquisa Completa de Veículo')], description: 'Informações detalhadas sobre o veículo e seu proprietário.', faq: 'FAQ do serviço.', formFields: formTemplatePesquisaVeiculo },
