@@ -5,7 +5,7 @@ export const productImagePaths = {
 // --- Cartório de Registro de Imóveis ---
 // Caminho: /documentos/imoveis/
 'certidao-de-imovel': '/documentos/imoveis/certidao-de-imovel.jpg',
-'visualizacao-de-matricula': '/documentos/imoveis/certidao-de-imovel.jpg',
+'visualizacao-de-matricula': '/documentos/pesquisa/pesquisa.png',
 'certidao-de-matricula-com-onus-e-acoes': '/documentos/imoveis/certidao-de-imovel.jpg',
 'certidao-de-penhor-e-safra': '/documentos/imoveis/certidao-de-penhor-e-safra.png',
 // Pesquisas de Imóveis (Usam a imagem genérica de imóvel por enquanto)
