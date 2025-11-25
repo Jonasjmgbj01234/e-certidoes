@@ -40,7 +40,7 @@ export const productImagePaths = {
 'certidao-de-embargos-ibama': '/documentos/federais/IBAMA-CERT-DE-EMBARGO.png',
 'certidao-negativa-de-debitos-cnd-do-ibama': '/documentos/federais/IBAMA-CERT-NEGATIVA-DE-DEBITO.png',
 'certidao-negativa-de-debitos-da-uniao-cntnida': '/documentos/federais/CERT-DEBITOS-FEDERAIS-CNTNIDA.png',
-'certidao-de-quitacao-eleitoral-tse': '/documentos/federais/CERT-IMPROB-ADMINISTRATIVA-CNJ.png',
+'certidao-de-quitacao-eleitoral-tse': '/documentos/federais/CERT-QUITACAO-ELEITORAL-TSE.png',
 'certidao-de-propriedade-de-aeronave': '/documentos/federais/certidao-de-improbidade-administrativa-cnj.png',
 // --- Certidões Estaduais ---
 // Caminho: /documentos/estaduais/
